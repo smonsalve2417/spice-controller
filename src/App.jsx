@@ -30,6 +30,7 @@ function loadConfig() {
 
 function App() {
   const [config, setConfig] = useState(loadConfig)
+  const playerNumber = Number(config.player) + 1
   const { pressed, press, release, connect, disconnect, connection, error } = usePressedControls(config)
 
   useEffect(() => {
@@ -49,7 +50,7 @@ function App() {
     <main className="controller-shell">
       <Header connection={connection} />
       <ConnectionPanel config={config} connection={connection} error={error} onChange={handleConfigChange} onConnect={connect} onDisconnect={disconnect} />
-      <section className="controls" aria-label="Controles del jugador 1">
+      <section className="controls" aria-label={`Controles del jugador ${playerNumber}`}>
         <div className="control-section direction-section">
           <div className="section-heading"><span className="section-number">00</span><div><h2>Tarjeta</h2></div></div>
           <CardPad pressed={pressed} onPress={press} onRelease={release} player={config.player} />
@@ -69,7 +70,7 @@ function App() {
           <NumericKeypad pressed={pressed} onPress={press} onRelease={release} />
         </div>
       </section>
-      <footer><span>PLAYER 1</span><span>HOLD TO ACTIVATE</span></footer>
+      <footer><span>PLAYER {playerNumber}</span><span>HOLD TO ACTIVATE</span></footer>
     </main>
   )
 }

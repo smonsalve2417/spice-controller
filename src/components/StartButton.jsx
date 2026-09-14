@@ -1,32 +1,22 @@
 import ControlButton from './ControlButton'
 import './StartButton.css'
 
-function StartButton({ pressed, onPress, onRelease }) {
+function StartButton({ pressed, onPress, onRelease, player }) {
+  const playerNumber = Number(player) + 1
+
   return (
-    <div className="start-buttons" aria-label="Botones Start">
+    <div className="start-buttons" aria-label={`Botón P${playerNumber} Start`}>
       <div className="start-control">
         <ControlButton
-          id="p1-start"
-          label="P1 Start"
+          id="start"
+          label={`P${playerNumber} Start`}
           display="▶"
-          className="start-button p1-start"
-          pressed={pressed.has('p1-start')}
+          className={`start-button p${playerNumber}-start`}
+          pressed={pressed.has('start')}
           onPress={onPress}
           onRelease={onRelease}
         />
-        <span>P1 START</span>
-      </div>
-      <div className="start-control">
-        <ControlButton
-          id="p2-start"
-          label="P2 Start"
-          display="▶"
-          className="start-button p2-start"
-          pressed={pressed.has('p2-start')}
-          onPress={onPress}
-          onRelease={onRelease}
-        />
-        <span>P2 START</span>
+        <span>P{playerNumber} START</span>
       </div>
     </div>
   )

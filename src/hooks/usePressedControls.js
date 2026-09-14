@@ -8,27 +8,22 @@ const keyAliases = {
   ' ': 'card'
 }
 
-const buttonIds = ['up', 'down', 'left', 'right', 'p1-start', 'p2-start']
-const directionPatterns = {
-  up: /(^|[^a-z])(up|uparrow|arrowup)([^a-z]|$)/,
-  down: /(^|[^a-z])(down|downarrow|arrowdown)([^a-z]|$)/,
-  left: /(^|[^a-z])(left|leftarrow|arrowleft)([^a-z]|$)/,
-  right: /(^|[^a-z])(right|rightarrow|arrowright)([^a-z]|$)/,
-  'p1-start': /(^|[^a-z])(p1\s+start|p1\s+menu\s+start)([^a-z]|$)/,
-  'p2-start': /(^|[^a-z])(p2\s+start|p2\s+menu\s+start)([^a-z]|$)/,
+const buttonIds = ['up', 'down', 'left', 'right', 'start']
+const buttonLabels = {
+  up: 'Menu Up',
+  down: 'Menu Down',
+  left: 'Menu Left',
+  right: 'Menu Right',
+  start: 'Start',
 }
 
-function findButtonName(names, buttonId) {
-  const preferred = {
-    up: 'P1 Menu Up',
-    down: 'P1 Menu Down',
-    left: 'P1 Menu Left',
-    right: 'P1 Menu Right',
-    'p1-start': 'P1 Start',
-    'p2-start': 'P2 Start',
-  }[buttonId]
+function findButtonName(names, buttonId, playerIndex) {
+  const playerPrefix = `P${playerIndex + 1}`
+  const preferred = `${playerPrefix} ${buttonLabels[buttonId]}`
   return names.find((name) => name === preferred)
-    || names.find((name) => directionPatterns[buttonId].test(name.toLowerCase()))
+    || names.find((name) => name.toLowerCase() === preferred.toLowerCase())
+    || names.find((name) => name.toLowerCase().includes(playerPrefix.toLowerCase())
+      && name.toLowerCase().includes(buttonLabels[buttonId].toLowerCase()))
     || null
 }
 
@@ -44,9 +39,10 @@ function usePressedControls({ host, port, password, card, player }) {
   const [pressed, setPressed] = useState(new Set())
   const [connection, setConnection] = useState('idle')
   const [error, setError] = useState('')
+  const playerIndex = Number(player) === 1 ? 1 : 0
 
   const sendKeypadState = () => {
-    apiRef.current?.send('keypads', 'set', [0, ...keypadRef.current])
+    apiRef.current?.send('keypads', 'set', [playerIndex, ...keypadRef.current])
   }
 
   const sendDirection = (id, isPressed) => {
@@ -132,7 +128,7 @@ function usePressedControls({ host, port, password, card, player }) {
           const names = data.map((entry) => Array.isArray(entry) ? entry[0] : null)
             .filter((name) => typeof name === 'string')
           directionNamesRef.current = new Map(
-            buttonIds.map((buttonId) => [buttonId, findButtonName(names, buttonId)]),
+            buttonIds.map((buttonId) => [buttonId, findButtonName(names, buttonId, playerIndex)]),
           )
         }).catch((requestError) => setError(requestError.message))
       }
