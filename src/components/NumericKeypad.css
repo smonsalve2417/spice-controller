@@ -3,19 +3,35 @@
 	grid-template-columns: repeat(3, 58px);
 	gap: 10px;
 	justify-content: center;
+	padding: 12px;
+	background: rgba(255, 255, 255, .44);
+	border: 1px solid var(--line);
+	clip-path: polygon(4% 0, 96% 0, 100% 4%, 100% 96%, 96% 100%, 4% 100%, 0 96%, 0 4%);
 }
 
 .key-button {
 	width: 58px;
 	height: 58px;
 	padding: 0;
-	border-radius: 50%;
+	border: 0;
+	border-radius: 0;
+	background: var(--button-border);
+	clip-path: polygon(14% 0, 86% 0, 100% 14%, 100% 86%, 86% 100%, 14% 100%, 0 86%, 0 14%);
 	box-shadow: 0 2px 0 var(--button-border);
+}
+
+.key-button::before {
+	content: '';
+	position: absolute;
+	inset: 3px;
+	background: var(--button);
+	clip-path: inherit;
 }
 
 .key-button:hover {
 	background: var(--button);
 	transform: translateY(-1px);
+	color: var(--accent);
 }
 
 .key-button.is-pressed {
@@ -37,6 +53,7 @@
 	.keypad {
 		grid-template-columns: repeat(3, 52px);
 		gap: 8px;
+		padding: 8px;
 	}
 	.key-button {
 		width: 52px;

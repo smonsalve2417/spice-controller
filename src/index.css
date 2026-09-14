@@ -1,12 +1,14 @@
 :root {
-  --ink: #1e2423;
-  --muted: #77817d;
-  --bg: #f3f0e9;
-  --line: #d9d8d0;
-  --button: #faf8f2;
-  --button-border: #d0d1c9;
-  --accent: #e45538;
-  --accent-soft: rgba(228, 85, 56, .18);
+  --ink: #17252c;
+  --muted: #71828a;
+  --bg: #eef3f5;
+  --line: #cbd8dc;
+  --button: #fbfeff;
+  --button-border: #a8bdc5;
+  --accent: #f02d80;
+  --accent-soft: rgba(240, 45, 128, .18);
+  --cyan: #00b9d8;
+  --yellow: #f3c84b;
   --heading: Georgia, serif;
   --mono: 'Courier New', monospace;
   font: 16px/1.45 'Trebuchet MS', sans-serif;
