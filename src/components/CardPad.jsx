@@ -5,6 +5,8 @@ import './CardPad.css'
 
 
 function CardPad({ pressed, onPress, onRelease, player }) {
+
+  const playerIndex = Number(player)+1
   return (
     <div className="tarjeta" aria-label="Direcciones">
 
@@ -12,7 +14,7 @@ function CardPad({ pressed, onPress, onRelease, player }) {
           key="card"
           id="card"
           label="Tarjeta"
-          display={`Tarjeta P${player+1}`}
+          display={`Tarjeta P${playerIndex}`}
           className="card-button"
           pressed={pressed.has("card")}
           onPress={onPress}

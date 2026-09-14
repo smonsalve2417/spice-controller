@@ -8,18 +8,27 @@ const keyAliases = {
   ' ': 'card'
 }
 
-const directions = ['up', 'down', 'left', 'right']
+const buttonIds = ['up', 'down', 'left', 'right', 'p1-start', 'p2-start']
 const directionPatterns = {
   up: /(^|[^a-z])(up|uparrow|arrowup)([^a-z]|$)/,
   down: /(^|[^a-z])(down|downarrow|arrowdown)([^a-z]|$)/,
   left: /(^|[^a-z])(left|leftarrow|arrowleft)([^a-z]|$)/,
   right: /(^|[^a-z])(right|rightarrow|arrowright)([^a-z]|$)/,
+  'p1-start': /(^|[^a-z])(p1\s+start|p1\s+menu\s+start)([^a-z]|$)/,
+  'p2-start': /(^|[^a-z])(p2\s+start|p2\s+menu\s+start)([^a-z]|$)/,
 }
 
-function findDirection(names, direction) {
-  const preferred = `P1 Menu ${direction[0].toUpperCase()}${direction.slice(1)}`
+function findButtonName(names, buttonId) {
+  const preferred = {
+    up: 'P1 Menu Up',
+    down: 'P1 Menu Down',
+    left: 'P1 Menu Left',
+    right: 'P1 Menu Right',
+    'p1-start': 'P1 Start',
+    'p2-start': 'P2 Start',
+  }[buttonId]
   return names.find((name) => name === preferred)
-    || names.find((name) => directionPatterns[direction].test(name.toLowerCase()))
+    || names.find((name) => directionPatterns[buttonId].test(name.toLowerCase()))
     || null
 }
 
@@ -79,7 +88,7 @@ function usePressedControls({ host, port, password, card, player }) {
       sendCard()
       return
     }
-    if (directions.includes(id)) {
+    if (buttonIds.includes(id)) {
       sendDirection(id, true)
       return
     }
@@ -93,7 +102,7 @@ function usePressedControls({ host, port, password, card, player }) {
       next.delete(id)
       return next
     })
-    if (directions.includes(id)) {
+    if (buttonIds.includes(id)) {
       sendDirection(id, false)
       return
     }
@@ -123,7 +132,7 @@ function usePressedControls({ host, port, password, card, player }) {
           const names = data.map((entry) => Array.isArray(entry) ? entry[0] : null)
             .filter((name) => typeof name === 'string')
           directionNamesRef.current = new Map(
-            directions.map((direction) => [direction, findDirection(names, direction)]),
+            buttonIds.map((buttonId) => [buttonId, findButtonName(names, buttonId)]),
           )
         }).catch((requestError) => setError(requestError.message))
       }
