@@ -5,6 +5,7 @@ const keyAliases = {
   ArrowUp: 'up', ArrowLeft: 'left', ArrowDown: 'down', ArrowRight: 'right',
   '7': '7', '8': '8', '9': '9', '4': '4', '5': '5', '6': '6',
   '1': '1', '2': '2', '3': '3', '0': '0', '.': 'D',
+  ' ': 'card'
 }
 
 const directions = ['up', 'down', 'left', 'right']
@@ -27,7 +28,7 @@ function isEditableTarget(target) {
     && (target.matches('input, textarea, select') || target.isContentEditable)
 }
 
-function usePressedControls({ host, port, password }) {
+function usePressedControls({ host, port, password, card, player }) {
   const apiRef = useRef(null)
   const keypadRef = useRef(new Set())
   const directionNamesRef = useRef(new Map())
@@ -49,8 +50,35 @@ function usePressedControls({ host, port, password }) {
     )
   }
 
+  const sendCard = () => {
+    if (!apiRef.current?.connected) {
+      setError('Conecta con Spice2x antes de insertar una tarjeta.')
+      return
+    }
+
+    const cardId = String(card || '').trim().toUpperCase()
+    const playerIndex = Number(player)
+
+    if (!/^[0-9A-F]{16}$/.test(cardId)) {
+      setError('La tarjeta debe tener exactamente 16 caracteres hexadecimales.')
+      return
+    }
+    if (playerIndex !== 0 && playerIndex !== 1) {
+      setError('El jugador debe ser 0 (P1) o 1 (P2).')
+      return
+    }
+
+    apiRef.current.request('card', 'insert', [playerIndex, cardId])
+      .then(() => setError(''))
+      .catch((requestError) => setError(requestError.message))
+  }
+
   const press = (id) => {
     setPressed((current) => new Set(current).add(id))
+    if (id === 'card') {
+      sendCard()
+      return
+    }
     if (directions.includes(id)) {
       sendDirection(id, true)
       return
@@ -69,6 +97,7 @@ function usePressedControls({ host, port, password }) {
       sendDirection(id, false)
       return
     }
+    if (id === 'card') return
     keypadRef.current.delete(id)
     sendKeypadState()
   }

@@ -1,3 +1,45 @@
-.keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; max-width: 230px; }
-.key-button { aspect-ratio: 1.35; border-radius: 9px; }
-@media (max-width: 650px) { .keypad { margin: auto; } }
+.keypad {
+	display: grid;
+	grid-template-columns: repeat(3, 58px);
+	gap: 10px;
+	justify-content: center;
+}
+
+.key-button {
+	width: 58px;
+	height: 58px;
+	padding: 0;
+	border-radius: 50%;
+	box-shadow: 0 2px 0 var(--button-border);
+}
+
+.key-button:hover {
+	background: var(--button);
+	transform: translateY(-1px);
+}
+
+.key-button.is-pressed {
+	box-shadow: none;
+}
+
+@media (max-width: 650px) {
+	.keypad {
+		grid-template-columns: repeat(3, 64px);
+		gap: 11px;
+	}
+	.key-button {
+		width: 64px;
+		height: 64px;
+	}
+}
+
+@media (max-width: 380px) {
+	.keypad {
+		grid-template-columns: repeat(3, 52px);
+		gap: 8px;
+	}
+	.key-button {
+		width: 52px;
+		height: 52px;
+	}
+}

@@ -5,9 +5,10 @@ import ConnectionPanel from './components/ConnectionPanel'
 import DirectionPad from './components/DirectionPad'
 import NumericKeypad from './components/NumericKeypad'
 import usePressedControls from './hooks/usePressedControls'
+import CardPad from './components/CardPad'
 
 function App() {
-  const [config, setConfig] = useState({ host: 'localhost', port: '1337', password: '' })
+  const [config, setConfig] = useState({ host: 'localhost', port: '1337', password: '' ,card: '', player: 0})
   const { pressed, press, release, connect, disconnect, connection, error } = usePressedControls(config)
 
   const handleConfigChange = (event) => {
@@ -20,6 +21,11 @@ function App() {
       <Header connection={connection} />
       <ConnectionPanel config={config} connection={connection} error={error} onChange={handleConfigChange} onConnect={connect} onDisconnect={disconnect} />
       <section className="controls" aria-label="Controles del jugador 1">
+        <div className="control-section direction-section">
+          <div className="section-heading"><span className="section-number">00</span><div><h2>Tarjeta</h2></div></div>
+          <CardPad pressed={pressed} onPress={press} onRelease={release} player={config.player} />
+        </div>
+        <div className="divider" />
         <div className="control-section direction-section">
           <div className="section-heading"><span className="section-number">01</span><div><h2>Dirección</h2><p>Navegación del menú</p></div></div>
           <DirectionPad pressed={pressed} onPress={press} onRelease={release} />

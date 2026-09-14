@@ -1,5 +1,5 @@
 .connection-panel { border-bottom: 1px solid var(--line); padding: 24px 0 28px; }
-.connection-fields { display: grid; grid-template-columns: 1fr 130px 1fr; gap: 14px; }
+.connection-fields { display: grid; grid-template-columns: 1fr 130px 1fr; gap: 14px; margin-bottom: 16px; }
 .connection-fields label { color: var(--muted); display: grid; gap: 7px; font: 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
 .connection-fields input { border: 1px solid var(--button-border); border-radius: 5px; background: var(--button); color: var(--ink); min-width: 0; padding: 10px 11px; font: 14px var(--mono); }
 .connection-fields input:focus-visible { outline: 3px solid var(--accent-soft); outline-offset: 2px; border-color: var(--accent); }

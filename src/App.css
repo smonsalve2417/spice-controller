@@ -1,5 +1,5 @@
 .controller-shell { width: min(100%, 860px); margin: 0 auto; padding: 58px 44px 28px; box-sizing: border-box; }
-.controls { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 40px; padding: 47px 12px 54px; align-items: center; }
+.controls { display: grid; grid-template-columns: 1fr; gap: 40px; padding: 47px 12px 54px; align-items: center; }
 .divider { background: var(--line); align-self: stretch; }
 .control-section { min-width: 0; }
 .section-heading { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 29px; }
