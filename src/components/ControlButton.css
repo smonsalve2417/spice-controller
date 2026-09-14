@@ -1,0 +1,4 @@
+.control-button { border: 1px solid var(--button-border); background: var(--button); color: var(--ink); cursor: pointer; font: 500 19px var(--mono); transition: background .12s, color .12s, transform .12s, border-color .12s; touch-action: none; user-select: none; }
+.control-button:hover { border-color: var(--accent); color: var(--accent); }
+.control-button:focus-visible { outline: 3px solid var(--accent-soft); outline-offset: 3px; }
+.control-button.is-pressed { background: var(--accent); border-color: var(--accent); color: white; transform: translateY(2px) scale(.96); }
