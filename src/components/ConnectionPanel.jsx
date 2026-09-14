@@ -27,10 +27,17 @@ function ConnectionPanel({ config, connection, error, onChange, onConnect, onDis
         </label>
       </div>
       <div className="connection-fields">
-        <label>
-          Jugador
-          <input name="player" type="number" min="0" max="1" value={config.player} onChange={onChange} placeholder="P1 0 | P2 1" />
-        </label>
+        <fieldset className="player-selector">
+          <legend>Jugador</legend>
+          <label className={String(config.player) === '0' ? 'selected' : ''}>
+            <input name="player" type="radio" value="0" checked={String(config.player) === '0'} onChange={onChange} />
+            <span>P1</span>
+          </label>
+          <label className={String(config.player) === '1' ? 'selected' : ''}>
+            <input name="player" type="radio" value="1" checked={String(config.player) === '1'} onChange={onChange} />
+            <span>P2</span>
+          </label>
+        </fieldset>
       </div>
       <div className="connection-actions">
         <button type="button" onClick={connected ? onDisconnect : onConnect} disabled={connection === 'connecting'}>

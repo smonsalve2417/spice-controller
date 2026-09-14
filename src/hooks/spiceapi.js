@@ -40,9 +40,14 @@ class SpiceApi {
 
     get url() {
         // the websocket listener always sits one port above the API port
-        const host = this.host.includes(':') && !this.host.startsWith('[')
-                ? `[${this.host}]`
-                : this.host;
+        const isSecurePage = typeof window !== 'undefined' && window.location.protocol === 'https:';
+        const hostName = isSecurePage ? window.location.hostname : this.host;
+        const host = hostName.includes(':') && !hostName.startsWith('[')
+                ? `[${hostName}]`
+                : hostName;
+        if (isSecurePage) {
+            return `wss://${host}`;
+        }
         return `ws://${host}:${this.port + 1}`;
     }
 
