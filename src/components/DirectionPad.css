@@ -1,60 +1,119 @@
 .direction-pad {
-	display: grid;
-	grid-template: repeat(3, 70px) / repeat(3, 70px);
-	gap: 10px;
-	justify-content: center;
-	padding: 10px;
-	background: rgba(255, 255, 255, .44);
-	border: 1px solid var(--line);
-	clip-path: polygon(8% 0, 92% 0, 100% 8%, 100% 92%, 92% 100%, 8% 100%, 0 92%, 0 8%);
+  display: grid;
+  grid-template: repeat(3, 70px) / repeat(3, 70px);
+  gap: 10px;
+  justify-content: center;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.44);
+  border: 1px solid var(--line);
+  clip-path: polygon(
+    8% 0,
+    92% 0,
+    100% 8%,
+    100% 92%,
+    92% 100%,
+    8% 100%,
+    0 92%,
+    0 8%
+  );
 }
 
 .direction-button {
-	position: relative;
-	border: 0;
-	border-radius: 0;
-	background: var(--cyan);
-	clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
-	color: var(--ink);
-	font-size: 28px;
-	font-weight: 700;
-	filter: drop-shadow(0 3px 0 rgba(23, 37, 44, .16));
-	transition: background .12s, color .12s, transform .12s, filter .12s;
+  position: relative;
+  border: 0;
+  border-radius: 0;
+  background: var(--cyan);
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  color: var(--ink);
+  font-size: 28px;
+  font-weight: 700;
+  filter: drop-shadow(0 3px 0 rgba(23, 37, 44, 0.16));
+  transition:
+    background 0.12s,
+    color 0.12s,
+    transform 0.12s,
+    filter 0.12s;
 }
 
 .direction-button::before {
-	content: '';
-	position: absolute;
-	inset: 5px;
-	background: var(--button);
-	clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  content: "";
+  position: absolute;
+  inset: 5px;
+  background: var(--button);
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
 }
 
 .direction-button::after {
-	content: '';
-	position: absolute;
-	inset: 12px;
-	border: 1px solid rgba(0, 185, 216, .28);
-	clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(0, 185, 216, 0.28);
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
 }
 
-.direction-button:hover { background: var(--accent); color: var(--accent); filter: drop-shadow(0 4px 0 rgba(23, 37, 44, .18)); }
-.direction-button.is-pressed { background: var(--accent); color: var(--accent); filter: drop-shadow(0 1px 0 rgba(23, 37, 44, .18)); }
-.direction-button.up, .direction-button.down { background: var(--cyan); }
-.direction-button.left, .direction-button.right { background: var(--accent); }
-.direction-button.up:hover, .direction-button.down:hover, .direction-button.is-pressed { background: var(--accent); }
-.direction-button > * { position: relative; z-index: 1; }
-.direction-button.up { grid-area: 1 / 2; }
-.direction-button.left { grid-area: 2 / 1; }
-.direction-button.down { grid-area: 3 / 2; }
-.direction-button.right { grid-area: 2 / 3; }
+.direction-button:hover {
+  background: var(--accent);
+  color: var(--accent);
+  filter: drop-shadow(0 4px 0 rgba(23, 37, 44, 0.18));
+}
+.direction-button.is-pressed {
+  background: var(--accent);
+  color: var(--accent);
+  filter: drop-shadow(0 1px 0 rgba(23, 37, 44, 0.18));
+}
+.direction-button.up,
+.direction-button.down {
+  background: var(--cyan);
+}
+.direction-button.left,
+.direction-button.right {
+  background: var(--accent);
+}
+.direction-button.up:hover,
+.direction-button.down:hover,
+.direction-button.is-pressed {
+  background: var(--accent);
+}
+.direction-button > * {
+  position: relative;
+  z-index: 1;
+}
+.direction-button.up {
+  grid-area: 1 / 2;
+}
+.direction-button.left {
+  grid-area: 2 / 1;
+}
+.direction-button.down {
+  grid-area: 3 / 2;
+}
+.direction-button.right {
+  grid-area: 2 / 3;
+}
 
-.direction-pad .start-buttons { grid-area: 2 / 2; align-self: center; }
-.direction-pad .start-control { gap: 0; }
-.direction-pad .start-control span { display: none; }
-.direction-pad .start-button { width: 70px; height: 70px; }
+.direction-pad .start-buttons {
+  grid-area: 2 / 2;
+  align-self: center;
+}
+.direction-pad .start-control {
+  gap: 0;
+}
+.direction-pad .start-control span {
+  display: none;
+}
+.direction-pad .start-button {
+  width: 70px;
+  height: 70px;
+}
 
 @media (max-width: 380px) {
-	.direction-pad { grid-template: repeat(3, 58px) / repeat(3, 58px); gap: 7px; padding: 7px; }
-	.direction-pad .start-button { width: 58px; height: 58px; }
+  .direction-pad {
+    grid-template: repeat(3, 58px) / repeat(3, 58px);
+    gap: 7px;
+    padding: 7px;
+  }
+  .direction-pad .start-button {
+    width: 58px;
+    height: 58px;
+  }
 }
