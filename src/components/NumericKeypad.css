@@ -28,14 +28,16 @@
 	clip-path: inherit;
 }
 
-.key-button:hover {
-	background: var(--button);
-	transform: translateY(-1px);
-	color: var(--accent);
-}
-
 .key-button.is-pressed {
 	box-shadow: none;
+}
+
+@media (hover: hover) {
+	.key-button:hover {
+		background: var(--button);
+		transform: translateY(-1px);
+		color: var(--accent);
+	}
 }
 
 @media (max-width: 650px) {

@@ -51,11 +51,6 @@
   clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
 }
 
-.direction-button:hover {
-  background: var(--accent);
-  color: var(--accent);
-  filter: drop-shadow(0 4px 0 rgba(23, 37, 44, 0.18));
-}
 .direction-button.is-pressed {
   background: var(--accent);
   color: var(--accent);
@@ -69,10 +64,21 @@
 .direction-button.right {
   background: var(--accent);
 }
-.direction-button.up:hover,
-.direction-button.down:hover,
 .direction-button.is-pressed {
   background: var(--accent);
+}
+
+@media (hover: hover) {
+  .direction-button:hover {
+    background: var(--accent);
+    color: var(--accent);
+    filter: drop-shadow(0 4px 0 rgba(23, 37, 44, 0.18));
+  }
+
+  .direction-button.up:hover,
+  .direction-button.down:hover {
+    background: var(--accent);
+  }
 }
 .direction-button > * {
   position: relative;

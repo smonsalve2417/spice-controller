@@ -12,19 +12,21 @@
   touch-action: none;
   user-select: none;
 }
-.control-button:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
+@media (hover: hover) {
+  .control-button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
 
-.control-button.p1-start:hover {
-  border-color: var(--cyan);
-  color: var(--cyan);
-}
+  .control-button.p1-start:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+  }
 
-.control-button.p2-start:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  .control-button.p2-start:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
 }
 
 .control-button:focus-visible {

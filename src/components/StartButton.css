@@ -31,18 +31,17 @@
 .start-button.p2-start {
   background: var(--accent);
 }
-.start-button.p1-start:hover {
-  color: #fff;
-  filter: saturate(1.16) brightness(1.05);
-}
-.start-button.p2-start:hover {
-  color: #fff;
-  filter: saturate(1.16) brightness(1.05);
-}
 .start-button.is-pressed {
   box-shadow:
     0 2px 0 rgba(30, 36, 35, 0.16),
     inset 0 0 0 3px rgba(255, 255, 255, 0.16);
+}
+@media (hover: hover) {
+  .start-button.p1-start:hover,
+  .start-button.p2-start:hover {
+    color: #fff;
+    filter: saturate(1.16) brightness(1.05);
+  }
 }
 @media (max-width: 650px) {
   .start-buttons {

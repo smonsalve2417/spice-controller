@@ -31,26 +31,28 @@
   overflow-wrap: anywhere;
 }
 
-.card-button.p1-card:hover {
-  border-color: var(--cyan);
-  color: var(--cyan);
-}
-
 .card-button.p1-card.is-pressed {
   background: var(--cyan);
   border-color: var(--cyan);
   color: #fff;
 }
 
-.card-button.p2-card:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
 .card-button.p2-card.is-pressed {
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;
+}
+
+@media (hover: hover) {
+  .card-button.p1-card:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+  }
+
+  .card-button.p2-card:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
 }
 
 @media (max-width: 650px) {
