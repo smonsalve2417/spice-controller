@@ -19,7 +19,7 @@ function CardPad({ pressed, onPress, onRelease, player, card }) {
             {cardCode && <span className="card-code">{cardCode}</span>}
           </>
         }
-        className="card-button"
+        className={`card-button p${playerIndex}-card`}
         pressed={pressed.has("card")}
         onPress={onPress}
         onRelease={onRelease}
