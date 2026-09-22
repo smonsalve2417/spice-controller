@@ -1,64 +1,82 @@
 .keypad {
-	display: grid;
-	grid-template-columns: repeat(3, 58px);
-	gap: 10px;
-	justify-content: center;
-	padding: 12px;
-	background: rgba(255, 255, 255, .44);
-	border: 1px solid var(--line);
-	clip-path: polygon(4% 0, 96% 0, 100% 4%, 100% 96%, 96% 100%, 4% 100%, 0 96%, 0 4%);
+  display: grid;
+  grid-template-columns: repeat(3, 58px);
+  gap: 10px;
+  justify-content: center;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.44);
+  border: 1px solid var(--line);
+  clip-path: polygon(
+    4% 0,
+    96% 0,
+    100% 4%,
+    100% 96%,
+    96% 100%,
+    4% 100%,
+    0 96%,
+    0 4%
+  );
 }
 
 .key-button {
-	width: 58px;
-	height: 58px;
-	padding: 0;
-	border: 0;
-	border-radius: 0;
-	background: var(--button-border);
-	clip-path: polygon(14% 0, 86% 0, 100% 14%, 100% 86%, 86% 100%, 14% 100%, 0 86%, 0 14%);
-	box-shadow: 0 2px 0 var(--button-border);
+  width: 58px;
+  height: 58px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: var(--button-border);
+  clip-path: polygon(
+    14% 0,
+    86% 0,
+    100% 14%,
+    100% 86%,
+    86% 100%,
+    14% 100%,
+    0 86%,
+    0 14%
+  );
+  box-shadow: 0 2px 0 var(--button-border);
 }
 
 .key-button::before {
-	content: '';
-	position: absolute;
-	inset: 3px;
-	background: var(--button);
-	clip-path: inherit;
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background: var(--button);
+  clip-path: inherit;
 }
 
 .key-button.is-pressed {
-	box-shadow: none;
+  box-shadow: none;
 }
 
 @media (hover: hover) {
-	.key-button:hover {
-		background: var(--button);
-		transform: translateY(-1px);
-		color: var(--accent);
-	}
+  .key-button:hover {
+    background: var(--button);
+    transform: translateY(-1px);
+    color: var(--accent);
+  }
 }
 
 @media (max-width: 650px) {
-	.keypad {
-		grid-template-columns: repeat(3, 64px);
-		gap: 11px;
-	}
-	.key-button {
-		width: 64px;
-		height: 64px;
-	}
+  .keypad {
+    grid-template-columns: repeat(3, 64px);
+    gap: 11px;
+  }
+  .key-button {
+    width: 64px;
+    height: 64px;
+  }
 }
 
 @media (max-width: 380px) {
-	.keypad {
-		grid-template-columns: repeat(3, 52px);
-		gap: 8px;
-		padding: 8px;
-	}
-	.key-button {
-		width: 52px;
-		height: 52px;
-	}
+  .keypad {
+    grid-template-columns: repeat(3, 52px);
+    gap: 8px;
+    padding: 8px;
+  }
+  .key-button {
+    width: 52px;
+    height: 52px;
+  }
 }
