@@ -11,6 +11,24 @@
   border-radius: 10px;
   width: 50%;
   height: 15vh;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.card-title {
+  font-size: 19px;
+}
+
+.card-code {
+  max-width: 100%;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 650px) {
