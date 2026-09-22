@@ -1,4 +1,55 @@
-# React + Vite
+# Spice Controller
+
+## Entrega en red local
+
+Requisitos para construir y probar la aplicación: Node.js y Python 3.
+
+```powershell
+npm install
+npm run build
+npm run serve:lan
+```
+
+El servidor abre `http://127.0.0.1` en este computador y escucha en todas
+las interfaces de red. Desde otro equipo de la misma red, abre
+`http://IP-DEL-COMPUTADOR` y configura en la aplicación el host y puerto
+del API de Spice2x.
+
+También puedes cambiar el puerto sin editar archivos:
+
+```powershell
+python server.py --port 8081
+```
+
+## Ejecutable para Windows
+
+El `.exe` se construye una vez en un computador de desarrollo. El equipo donde
+se ejecute después no necesita Node.js, Python ni dependencias instaladas.
+
+```powershell
+python -m pip install -r requirements-build.txt
+npm run build:exe
+```
+
+El resultado queda en `release\SpiceControllerServer.exe`. Puedes copiar ese
+archivo a otro computador Windows y ejecutarlo; por defecto entrega la app en
+el puerto `80` y abre el navegador. Para no abrirlo automáticamente:
+
+```powershell
+.\release\SpiceControllerServer.exe --no-browser
+```
+
+Si Windows Firewall pregunta, permite el acceso para que los demás equipos de
+la red local puedan conectarse.
+
+## Desarrollo
+
+```powershell
+npm run dev
+```
+
+La documentación de la conexión HTTPS y del WebSocket de Spice2x está más
+abajo.
 
 ## Conexion desde HTTPS
 

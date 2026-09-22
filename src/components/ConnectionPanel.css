@@ -1,18 +1,116 @@
-.connection-panel { border-bottom: 1px solid var(--line); padding: 24px 0 28px; }
-.connection-fields { display: grid; grid-template-columns: 1fr 130px 1fr; gap: 14px; margin-bottom: 16px; }
-.connection-fields label { color: var(--muted); display: grid; gap: 7px; font: 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
-.connection-fields input { border: 1px solid var(--button-border); border-radius: 5px; background: var(--button); color: var(--ink); min-width: 0; padding: 10px 11px; font: 14px var(--mono); }
-.connection-fields input:focus-visible { outline: 3px solid var(--accent-soft); outline-offset: 2px; border-color: var(--accent); }
-.player-selector { border: 0; display: grid; grid-template-columns: repeat(2, minmax(80px, 1fr)); gap: 8px; margin: 0; min-width: 0; padding: 0; }
-.player-selector legend { color: var(--muted); margin-bottom: 7px; padding: 0; font: 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
-.player-selector label { align-items: center; background: var(--button); border: 1px solid var(--button-border); border-radius: 5px; color: var(--muted); cursor: pointer; display: flex; justify-content: center; min-height: 39px; padding: 0 14px; transition: background .15s ease, border-color .15s ease, color .15s ease; }
-.player-selector label:hover, .player-selector label.selected { background: var(--ink); border-color: var(--ink); color: var(--button); }
-.player-selector input { position: absolute; opacity: 0; pointer-events: none; }
-.player-selector input:focus-visible + span { outline: 3px solid var(--accent-soft); outline-offset: 4px; }
-.player-selector span { font: 13px var(--mono); letter-spacing: .08em; }
-.connection-actions { display: flex; align-items: center; gap: 16px; margin-top: 16px; }
-.connection-actions button { border: 0; border-radius: 5px; background: var(--ink); color: var(--button); cursor: pointer; padding: 10px 18px; font: 12px var(--mono); }
-.connection-actions button:hover { background: var(--accent); }
-.connection-actions button:disabled { cursor: wait; opacity: .55; }
-.connection-actions p { color: var(--accent); font: 12px var(--mono); overflow-wrap: anywhere; }
-@media (max-width: 650px) { .connection-fields { grid-template-columns: 1fr 1fr; } .connection-fields label:first-child, .connection-fields label:last-child { grid-column: 1 / -1; } }
+.connection-panel {
+  border-bottom: 1px solid var(--line);
+  padding: 24px 0 28px;
+}
+.connection-fields {
+  display: grid;
+  grid-template-columns: 1fr 130px 1fr;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.connection-fields label {
+  color: var(--muted);
+  display: grid;
+  gap: 7px;
+  font: 11px var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.connection-fields input {
+  border: 1px solid var(--button-border);
+  border-radius: 5px;
+  background: var(--button);
+  color: var(--ink);
+  min-width: 0;
+  padding: 10px 11px;
+  font: 14px var(--mono);
+}
+.connection-fields input:focus-visible {
+  outline: 3px solid var(--accent-soft);
+  outline-offset: 2px;
+  border-color: var(--accent);
+}
+.player-selector {
+  border: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+}
+.player-selector legend {
+  color: var(--muted);
+  margin-bottom: 7px;
+  padding: 0;
+  font: 11px var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.player-selector label {
+  align-items: center;
+  background: var(--button);
+  border: 1px solid var(--button-border);
+  border-radius: 5px;
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  min-height: 39px;
+  padding: 0 14px;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+.player-selector label:hover,
+.player-selector label.selected {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--button);
+}
+.player-selector input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.player-selector input:focus-visible + span {
+  outline: 3px solid var(--accent-soft);
+  outline-offset: 4px;
+}
+.player-selector span {
+  font: 13px var(--mono);
+  letter-spacing: 0.08em;
+}
+.connection-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+.connection-actions button {
+  border: 0;
+  border-radius: 5px;
+  background: var(--ink);
+  color: var(--button);
+  cursor: pointer;
+  padding: 10px 18px;
+  font: 12px var(--mono);
+}
+.connection-actions button:hover {
+  background: var(--accent);
+}
+.connection-actions button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+.connection-actions p {
+  color: var(--accent);
+  font: 12px var(--mono);
+  overflow-wrap: anywhere;
+}
+@media (max-width: 750px) {
+  .connection-fields {
+    grid-template-columns: 1fr;
+  }
+}

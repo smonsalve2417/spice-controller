@@ -49,6 +49,12 @@
 .direction-button.down { grid-area: 3 / 2; }
 .direction-button.right { grid-area: 2 / 3; }
 
+.direction-pad .start-buttons { grid-area: 2 / 2; align-self: center; }
+.direction-pad .start-control { gap: 0; }
+.direction-pad .start-control span { display: none; }
+.direction-pad .start-button { width: 70px; height: 70px; }
+
 @media (max-width: 380px) {
 	.direction-pad { grid-template: repeat(3, 58px) / repeat(3, 58px); gap: 7px; padding: 7px; }
+	.direction-pad .start-button { width: 58px; height: 58px; }
 }

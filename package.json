@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "serve:lan": "python server.py",
+    "build:exe": "powershell -ExecutionPolicy Bypass -File .\\build-exe.ps1",
     "lint": "oxlint",
     "preview": "vite preview"
   },

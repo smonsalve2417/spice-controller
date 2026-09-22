@@ -1,4 +1,5 @@
 import ControlButton from './ControlButton'
+import StartButton from './StartButton'
 import './DirectionPad.css'
 
 const directions = [
@@ -8,7 +9,7 @@ const directions = [
   { id: 'right', label: 'Derecha', symbol: '→', className: 'right' },
 ]
 
-function DirectionPad({ pressed, onPress, onRelease }) {
+function DirectionPad({ pressed, onPress, onRelease, player }) {
   return (
     <div className="direction-pad" aria-label="Direcciones">
       {directions.map(({ id, label, symbol, className }) => (
@@ -23,6 +24,7 @@ function DirectionPad({ pressed, onPress, onRelease }) {
           onRelease={onRelease}
         />
       ))}
+      <StartButton pressed={pressed} onPress={onPress} onRelease={onRelease} player={player} />
     </div>
   )
 }

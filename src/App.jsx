@@ -6,7 +6,6 @@ import DirectionPad from './components/DirectionPad'
 import NumericKeypad from './components/NumericKeypad'
 import usePressedControls from './hooks/usePressedControls'
 import CardPad from './components/CardPad'
-import StartButton from './components/StartButton'
 
 const CONFIG_STORAGE_KEY = 'spice-controller.config'
 const defaultConfig = {
@@ -56,13 +55,8 @@ function App() {
           <CardPad pressed={pressed} onPress={press} onRelease={release} player={config.player} />
         </div>
         <div className="control-section direction-section">
-          <div className="section-heading"><span className="section-number">00</span><div><h2>Iniciar</h2></div></div>
-          <StartButton pressed={pressed} onPress={press} onRelease={release} player={config.player} />
-        </div>
-        
-        <div className="control-section direction-section">
           <div className="section-heading"><span className="section-number">01</span><div><h2>Dirección</h2><p>Navegación del menú</p></div></div>
-          <DirectionPad pressed={pressed} onPress={press} onRelease={release} />
+          <DirectionPad pressed={pressed} onPress={press} onRelease={release} player={config.player} />
         </div>
         <div className="divider" />
         <div className="control-section keypad-section">

@@ -19,7 +19,7 @@ function CardPad({ pressed, onPress, onRelease, player }) {
           pressed={pressed.has("card")}
           onPress={onPress}
           onRelease={onRelease}
-        />
+      />
     </div>
   )
 }
