@@ -10,7 +10,7 @@ import CardPad from "./components/CardPad";
 const CONFIG_STORAGE_KEY = "spice-controller.config";
 const defaultConfig = {
   host: "localhost",
-  port: "1337",
+  port: "5000",
   password: "",
   card: "",
   player: 0,
@@ -36,10 +36,19 @@ function App() {
   useEffect(() => {
     try {
       localStorage.setItem(CONFIG_STORAGE_KEY, JSON.stringify(config));
+      connect();
     } catch {
       // La conexión sigue funcionando aunque el navegador bloquee el almacenamiento.
     }
   }, [config]);
+
+  useEffect(() => {
+    try {
+      connect();
+    } catch {
+      // La conexión sigue funcionando aunque el navegador bloquee el almacenamiento.
+    }
+  }, []);
 
   const handleConfigChange = (event) => {
     const { name, value } = event.target;
