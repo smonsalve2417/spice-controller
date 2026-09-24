@@ -6,6 +6,7 @@ import DirectionPad from "./components/DirectionPad";
 import NumericKeypad from "./components/NumericKeypad";
 import usePressedControls from "./hooks/usePressedControls";
 import CardPad from "./components/CardPad";
+import AdminPanel from "./components/AdminPanel";
 
 const CONFIG_STORAGE_KEY = "spice-controller.config";
 const defaultConfig = {
@@ -30,8 +31,16 @@ function loadConfig() {
 function App() {
   const [config, setConfig] = useState(loadConfig);
   const playerNumber = Number(config.player) + 1;
-  const { pressed, press, release, connect, disconnect, connection, error } =
-    usePressedControls(config);
+  const {
+    pressed,
+    press,
+    release,
+    connect,
+    disconnect,
+    addCredit,
+    connection,
+    error,
+  } = usePressedControls(config);
 
   useEffect(() => {
     try {
@@ -66,6 +75,7 @@ function App() {
         onConnect={connect}
         onDisconnect={disconnect}
       />
+
       <section
         className="controls"
         aria-label={`Controles del jugador ${playerNumber}`}
@@ -116,10 +126,11 @@ function App() {
           />
         </div>
       </section>
-      <footer>
-        <span>PLAYER {playerNumber}</span>
-        <span>HOLD TO ACTIVATE</span>
-      </footer>
+      <AdminPanel
+        connection={connection}
+        player={config.player}
+        onAddCredit={addCredit}
+      />
     </main>
   );
 }

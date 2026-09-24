@@ -1,0 +1,122 @@
+.admin-panel {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 0;
+}
+.admin-toggle {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  font: 10px var(--mono);
+  gap: 8px;
+  letter-spacing: 0.12em;
+  padding: 11px 0;
+  text-transform: uppercase;
+}
+.admin-toggle span:first-child {
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+.admin-toggle:hover,
+.admin-toggle:focus-visible {
+  color: var(--ink);
+}
+.admin-content {
+  padding: 13px 0 28px;
+}
+.admin-heading {
+  align-items: start;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.admin-kicker {
+  color: var(--accent);
+  font: 11px var(--mono);
+  letter-spacing: 0.16em;
+}
+.admin-heading h2 {
+  margin-top: 6px;
+}
+.admin-login,
+.admin-actions {
+  display: grid;
+  gap: 14px;
+}
+.admin-login p,
+.admin-actions p {
+  grid-column: 1 / -1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.admin-login {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  align-items: end;
+}
+.admin-login label {
+  color: var(--muted);
+  display: grid;
+  gap: 7px;
+  font: 11px var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.admin-login input {
+  box-sizing: border-box;
+  border: 1px solid var(--button-border);
+  border-radius: 5px;
+  background: var(--button);
+  color: var(--ink);
+  padding: 10px 11px;
+  font: 14px var(--mono);
+  width: 100%;
+}
+.admin-login button,
+.admin-actions button,
+.admin-logout {
+  border: 0;
+  border-radius: 5px;
+  background: var(--ink);
+  color: var(--button);
+  cursor: pointer;
+  padding: 10px 18px;
+  font: 12px var(--mono);
+}
+.admin-login button:hover,
+.admin-actions button:hover,
+.admin-logout:hover {
+  background: var(--accent);
+}
+.admin-actions p,
+.admin-login p {
+  color: var(--muted);
+  font: 12px var(--mono);
+}
+.admin-login p,
+.admin-actions p[role="status"] {
+  color: var(--accent);
+}
+.admin-actions button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+@media (max-width: 650px) {
+  .admin-login,
+  .admin-actions {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+  .admin-login input,
+  .admin-login button,
+  .admin-actions button {
+    box-sizing: border-box;
+    width: 100%;
+  }
+  .admin-login input {
+    font-size: 16px;
+  }
+}

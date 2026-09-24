@@ -17,6 +17,7 @@
   justify-content: center;
   align-items: center;
   gap: 6px;
+  touch-action: manipulation;
 }
 
 .card-title {
