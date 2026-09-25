@@ -15,6 +15,8 @@ const defaultConfig = {
   password: "",
   card: "",
   player: 0,
+  admin: "",
+  pass: "",
 };
 
 function loadConfig() {
@@ -76,6 +78,13 @@ function App() {
         onDisconnect={disconnect}
       />
 
+      <AdminPanel
+        connection={connection}
+        player={config.player}
+        admin={config.admin}
+        onAddCredit={addCredit}
+      />
+
       <section
         className="controls"
         aria-label={`Controles del jugador ${playerNumber}`}
@@ -126,11 +135,6 @@ function App() {
           />
         </div>
       </section>
-      <AdminPanel
-        connection={connection}
-        player={config.player}
-        onAddCredit={addCredit}
-      />
     </main>
   );
 }

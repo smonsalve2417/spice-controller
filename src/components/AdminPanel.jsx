@@ -1,13 +1,22 @@
 import { useState } from "react";
 import "./AdminPanel.css";
 
-const adminUsername = import.meta.env.VITE_ADMIN_USERNAME || "admin";
-const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD || "admin";
+const adminUsername = import.meta.env.VITE_ADMIN_USERNAME || "ccsp";
+const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD || "2294";
+const ADMIN_SESSION_STORAGE_KEY = "spice-controller.admin-session";
 
-function AdminPanel({ connection, player, onAddCredit }) {
+function loadAdminSession() {
+  try {
+    return localStorage.getItem(ADMIN_SESSION_STORAGE_KEY) === adminUsername;
+  } catch {
+    return false;
+  }
+}
+
+function AdminPanel({ connection, player, admin, onAddCredit }) {
   const [expanded, setExpanded] = useState(false);
-  const [authenticated, setAuthenticated] = useState(false);
-  const [username, setUsername] = useState("");
+  const [authenticated, setAuthenticated] = useState(loadAdminSession);
+  const [username, setUsername] = useState(admin);
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
   const [creditMessage, setCreditMessage] = useState("");
@@ -18,7 +27,11 @@ function AdminPanel({ connection, player, onAddCredit }) {
     if (username === adminUsername && password === adminPassword) {
       setAuthenticated(true);
       setLoginError("");
-      setPassword("");
+      try {
+        localStorage.setItem(ADMIN_SESSION_STORAGE_KEY, adminUsername);
+      } catch {
+        // La sesión sólo se mantiene durante esta visita si el almacenamiento está bloqueado.
+      }
       return;
     }
     setLoginError("Usuario o contraseña incorrectos.");
@@ -56,7 +69,14 @@ function AdminPanel({ connection, player, onAddCredit }) {
               <button
                 type="button"
                 className="admin-logout"
-                onClick={() => setAuthenticated(false)}
+                onClick={() => {
+                  setAuthenticated(false);
+                  try {
+                    localStorage.removeItem(ADMIN_SESSION_STORAGE_KEY);
+                  } catch {
+                    // La sesión local ya se cerró aunque el almacenamiento esté bloqueado.
+                  }
+                }}
               >
                 Cerrar sesión
               </button>
